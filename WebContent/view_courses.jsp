@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,7 +35,16 @@
 			<td class="col">Max # of Students</td>
 			<td class="col">Number of Enrollees</td>
 		</tr>
-			
+		
+		<c:forEach var="course" items="${courses}">
+			<tr>
+				<td class="col">${course.getId()}</td>
+				<td class="col">${course.getCourseCode()}</td>
+				<td class="col">${course.getUnits()}</td>
+				<td class="col">${course.getMaxStudents()}</td>
+			</tr>
+        </c:forEach>
+		
 	</table>
 
 </body>
