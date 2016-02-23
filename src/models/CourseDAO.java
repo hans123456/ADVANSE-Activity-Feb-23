@@ -16,7 +16,7 @@ public class CourseDAO extends DAO {
 			con = getConnection();
 			ps = con.prepareStatement(query);
 			rs = ps.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				Course course = new Course(rs.getInt(4), rs.getString(1),
 						rs.getInt(2), rs.getInt(3), rs.getInt(5));
 				courses.add(course);
