@@ -33,5 +33,6 @@ create table if not exists `enrollment` (
 	course_id int unsigned not null,
 	user_id int unsigned not null,
 	foreign key (course_id) references courses (id),
-	foreign key (user_id) references users (id)
+	foreign key (user_id) references users (id),
+	primary key (course_id, user_id)
 );

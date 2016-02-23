@@ -32,7 +32,7 @@ div.scrollable {
 	<form>
 		<table class="table">
 			<tr>
-				<td class="col">Enroll?</td>
+				<!-- <td class="col">Enroll?</td> -->
 				<td class="col">Course Code</td>
 				<td class="col">Units</td>
 				<td class="col">Max # of Students</td>
@@ -41,8 +41,8 @@ div.scrollable {
 
 			<c:forEach var="course" items="${courses}">
 				<tr>
-					<td class="col"><input type="checkbox" name="enroll"
-						value="${course.getId()}"></td>
+					<!-- <td class="col"><input type="checkbox" name="enroll"
+						value="${course.getId()}"></td> -->
 					<td class="col">${course.getCourseCode()}</td>
 					<td class="col">${course.getUnits()}</td>
 					<td class="col">${course.getMaxStudents()}</td>

@@ -11,7 +11,7 @@
 	<br />
 	<a href="">View Enrolled Courses</a>
 	<br />
-	<a href="">Enroll Course</a>
+	<a href="/ADVANSE/student/enroll_course.jsp">Enroll Course</a>
 	<br />
 	<a href="">Drop Course</a>
 	<br />
