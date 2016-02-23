@@ -18,14 +18,14 @@ import models.CourseDAO;
 /**
  * Servlet implementation class ViewCourse
  */
-@WebServlet("/view_courses")
-public class ViewCourse extends HttpServlet {
+@WebServlet("/student/view_all_courses")
+public class ViewAllCourses extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ViewCourse() {
+	public ViewAllCourses() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -36,17 +36,15 @@ public class ViewCourse extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+
 		CourseDAO courseDAO = new CourseDAO();
-        
-        List<Course> courses = courseDAO.getCourses();
- 
-        
-        request.setAttribute("courses", courses);
-		
-        request.getRequestDispatcher("view_courses.jsp").forward(request, response);
-		
+
+		List<Course> courses = courseDAO.getCourses();
+
+		request.setAttribute("courses", courses);
+
+		request.getRequestDispatcher("/WEB-INF/student/view_all_courses.jsp").forward(request, response);
+
 	}
 
 	/**
@@ -55,7 +53,6 @@ public class ViewCourse extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="">View All Courses</a>
+	<a href="/ADVANSE/student/view_all_courses">View All Courses</a>
 	<br />
 	<a href="">View Enrolled Courses</a>
 	<br />
