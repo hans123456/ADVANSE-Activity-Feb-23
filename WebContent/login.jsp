@@ -9,6 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<shiro:user>
+		<%
+			response.sendRedirect("/ADVANSE/index.jsp");
+		%>
+	</shiro:user>
 	<c:if test="${shiroLoginFailure != null}">Incorrect Username or Password.<br />
 	</c:if>
 	<form method="POST" action="">
