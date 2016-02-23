@@ -27,6 +27,8 @@ create table if not exists `courses` (
 	primary key (id) 
 );
 
+INSERT INTO `advanse`.`courses` (`id`, `course_code`, `units`, `max_students`) VALUES (NULL, 'SOFTWENG', '3', '5'), (NULL, 'THESIS', '6', '3'), (NULL, 'PE', '3', '5'), (NULL, 'ELECTIVE', '1', '10'), (NULL, 'DEVELOPM', '3', '5');
+
 create table if not exists `enrollment` (
 	course_id int unsigned not null,
 	user_id int unsigned not null,

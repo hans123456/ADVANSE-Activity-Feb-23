@@ -4,13 +4,11 @@ import java.sql.SQLException;
 
 public class UserDAO extends DAO {
 
-	private final static String createQuery = "INSERT INTO `users` (id, role_id, name, id_num, password, datetime_joined) VALUES (NULL, 1, ?, ?, ?, NOW())";
+	private final static String createQuery = "INSERT INTO `users` (`id`, `role_id`, `name`, `id_num`, `password`, `datetime_joined`) VALUES (NULL, 1, ?, ?, ?, NOW())";
 	private final static String[] createParams = { "name", "id_num", "password" };
 
-	private final static String getQuery = "SELECT `role`, `firstname`, `lastname`, `gender`, `salutation`, `birthdate`, `username`, `about_me` "
-			+ "FROM `roles`, `users`, `genders`, `salutations` WHERE `username` = ? and `role_id` = `roles`.`id` and "
-			+ "`gender_id` = `genders`.`id` and `salutation_id` = `salutations`.`id`";
-	private final static String[] getResult = { "name", "id_num", "password" };
+	private final static String getQuery = "SELECT `users`.`id`, `roles`.`role`, `name`, `id_num`, `datetime_joined` FROM `roles`, `users` WHERE `id_num` = ? and `role_id` = `roles`.`id`";
+	private final static String[] getResult = { "id", "role", "name", "id_num", "datetime_joined" };
 
 	public boolean create(User user) {
 		boolean result = false;
@@ -27,8 +25,10 @@ public class UserDAO extends DAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (ps != null) ps.close();
-				if (con != null) con.close();
+				if (ps != null)
+					ps.close();
+				if (con != null)
+					con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -36,12 +36,12 @@ public class UserDAO extends DAO {
 		return result;
 	}
 
-	public User getInfo(String username) {
+	public User getInfo(String id_num) {
 		User user = null;
 		try {
 			con = getConnection();
 			ps = con.prepareStatement(getQuery);
-			ps.setString(1, username);
+			ps.setString(1, id_num);
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				user = new User();
@@ -54,9 +54,12 @@ public class UserDAO extends DAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (ps != null) ps.close();
-				if (rs != null) rs.close();
-				if (con != null) con.close();
+				if (ps != null)
+					ps.close();
+				if (rs != null)
+					rs.close();
+				if (con != null)
+					con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
