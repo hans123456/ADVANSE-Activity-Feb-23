@@ -7,6 +7,13 @@ public class Course {
 	private int maxStudents;
 	private int enrolledStudents;
 	
+	public Course(int id, String courseCode, int units) {
+		super();
+		this.id = id;
+		this.courseCode = courseCode;
+		this.units = units;
+	}
+	
 	public Course(int id, String courseCode, int units, int maxStudents) {
 		super();
 		this.id = id;

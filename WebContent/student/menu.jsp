@@ -9,7 +9,7 @@
 <body>
 	<a href="/ADVANSE/student/view_all_courses">View All Courses</a>
 	<br />
-	<a href="">View Enrolled Courses</a>
+	<a href="/ADVANSE/student/view_enrolled">View Enrolled Courses</a>
 	<br />
 	<a href="">Enroll Course</a>
 	<br />
