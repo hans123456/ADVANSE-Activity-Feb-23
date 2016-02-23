@@ -8,10 +8,10 @@ public class ConnectionFactory {
 
 	private final static String driverClass = "com.mysql.jdbc.Driver";
 	private final static String serverName = "localhost:3306";
-	private final static String databaseName = "secudevcase1";
+	private final static String databaseName = "advanse";
 	private final static String connectionUrl = "jdbc:mysql://" + serverName + "/" + databaseName;
 	private final static String username = "root";
-	private final static String password = "";
+	private final static String password = "p@ssword";
 
 	static {
 		try {

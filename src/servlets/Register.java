@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
+import shiro.ShiroPasswordManager;
 import models.User;
 import models.UserDAO;
 
@@ -37,20 +38,20 @@ public class Register extends HttpServlet {
 
 		try {
 
-			Subject currentUser = SecurityUtils.getSubject();
-
-			String name = request.getParameter("name");
-			String username = request.getParameter("id_num");
+			String name = request.getParameter("fullname");
+			String username = request.getParameter("idnum");
 			String password = request.getParameter("password");
 
 			User user = new User();
-
+			user.setInfo("name", name);
+			user.setInfo("id_num", username);
+			user.setInfo("password", ShiroPasswordManager.encryptPassword(password));
+			
 			UserDAO dao = new UserDAO();
 			if (dao.create(user)) {
-				response.getWriter().print("success");
-				System.out.println("Hooray Registered!");
+				response.getWriter().print("Hooray Registered!");
 			} else {
-				response.getWriter().print("fail");
+				response.getWriter().print("Id Num Already Registered.");
 			}
 
 		} catch (Exception e) {

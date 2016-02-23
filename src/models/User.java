@@ -13,10 +13,6 @@ public class User {
 
 	private HashMap<String, String> info;
 
-	private List<String> salutationsMale = Arrays.asList(new String[] { "Mr", "Sir", "Senior", "Count" });
-	private List<String> salutationsFemale = Arrays
-			.asList(new String[] { "Miss", "Ms", "Mrs", "Madame", "Majesty", "Seniora" });
-
 	public User() {
 		this.info = new HashMap<String, String>();
 	}
