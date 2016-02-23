@@ -20,12 +20,20 @@ public class CourseDAO extends DAO {
 			+ "(SELECT `id` FROM `courses` WHERE `courses`.`course_code` = ?), "
 			+ "(SELECT `id` FROM `users` WHERE `users`.`id_num` = ?))";
 
+	private static final String dropCourseQuery = "DELETE FROM `enrollment` WHERE "
+			+ "`enrollment`.`course_id` = (SELECT `id` FROM `courses` WHERE `course_code` = ?) AND "
+			+ "`enrollment`.`user_id` = (SELECT `id` FROM `users` WHERE `id_num` = ?)";
+
+	private static final String checkIfEnrolledInCourseQuery = "SELECT EXISTS(SELECT 1 FROM `enrollment` WHERE "
+			+ "`enrollment`.`course_id` = (SELECT `id` FROM `courses` WHERE `course_code` = ?) AND"
+			+ "`enrollment`.`user_id` = (SELECT `id` FROM `users` WHERE `id_num` = ?)) as `result`";
+
 	private static final String getEnrolled = "select courses.id, courses.course_code, courses.units, enrollment.user_id "
 			+ "from enrollment inner join courses on enrollment.course_id = courses.id "
 			+ "where enrollment.user_id = ?";
 
 	public List<Course> getCourses() {
-		List<Course> courses = new ArrayList();
+		List<Course> courses = new ArrayList<Course>();
 		try {
 			con = getConnection();
 			ps = con.prepareStatement(getCourses);
@@ -54,7 +62,7 @@ public class CourseDAO extends DAO {
 	}
 
 	public List<Course> getEnrolledofUser(int id) {
-		List<Course> courses = new ArrayList();
+		List<Course> courses = new ArrayList<Course>();
 		try {
 			con = getConnection();
 			ps = con.prepareStatement(getEnrolled);
@@ -168,4 +176,63 @@ public class CourseDAO extends DAO {
 		}
 		return result;
 	}
+
+	public boolean dropCourse(String courseCode, String id_num) {
+		boolean result = true;
+		try {
+			con = getConnection();
+			ps = con.prepareStatement(dropCourseQuery);
+			ps.setString(1, courseCode);
+			ps.setString(2, id_num);
+			ps.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			result = false;
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (rs != null)
+					rs.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public boolean checkIfEnrolledInCourseQuery(String courseCode, String id_num) {
+		boolean result = false;
+		try {
+			con = getConnection();
+			ps = con.prepareStatement(checkIfEnrolledInCourseQuery);
+			ps.setString(1, courseCode);
+			ps.setString(2, id_num);
+			rs = ps.executeQuery();
+			if (rs.next())
+				if (rs.getInt(1) == 1)
+					result = true;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (rs != null)
+					rs.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 }

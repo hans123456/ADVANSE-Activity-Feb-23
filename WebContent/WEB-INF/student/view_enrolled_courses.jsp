@@ -29,6 +29,7 @@ div.scrollable {
 </head>
 <body>
 	<c:import url="/student/menu.jsp"></c:import>
+	<h2>Your Enrolled Courses</h2>
 	<form>
 		<table class="table">
 			<tr>

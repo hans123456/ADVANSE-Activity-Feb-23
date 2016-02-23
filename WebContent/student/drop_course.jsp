@@ -10,6 +10,7 @@
 </head>
 <body>
 	<c:import url="/student/menu.jsp"></c:import>
+	<h2>Drop Course</h2>
 	<form method="POST" action="/ADVANSE/student/drop_course">
 		Course Code <input type="text" name="course_code" id="course_code">
 		<input type="submit" value="Submit">

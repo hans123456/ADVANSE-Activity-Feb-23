@@ -10,21 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
 
-import models.Course;
 import models.CourseDAO;
-import models.UserDAO;
 
 /**
  * Servlet implementation class EnrollCourse
  */
-@WebServlet("/student/enroll_course")
-public class EnrollCourse extends HttpServlet {
+@WebServlet("/student/drop_course")
+public class DropCourse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public EnrollCourse() {
+	public DropCourse() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,31 +45,17 @@ public class EnrollCourse extends HttpServlet {
 				break outer;
 			}
 
-			Course course = courseDAO.getCourseInfo(courseCode);
-
-			UserDAO userDAO = new UserDAO();
-
 			String id_num = SecurityUtils.getSubject().getPrincipal().toString();
-			float currentNumberOfUnits = userDAO.getCurrentNumberOfUnits(id_num);
 
-			if (course.getEnrolledStudents() == course.getMaxStudents()) {
-				response.getWriter().println("Error, Course is Full.");
-				break outer;
-			}
-
-			if (course.getUnits() + currentNumberOfUnits > 9) {
-				response.getWriter().println("Error, Max Number of Possible Units Will Be Exceeded.");
-				break outer;
-			}
-
-			boolean result = courseDAO.enrollCourse(courseCode, id_num);
+			boolean result = courseDAO.checkIfEnrolledInCourseQuery(courseCode, id_num);
 
 			if (!result) {
-				response.getWriter().println("Error, Already Enrolled In The " + courseCode + ".");
+				response.getWriter().println("Error, Not Enrolled in " + courseCode + ".");
 				break outer;
-			} else {
-				response.getWriter().println("Hooray, Enrolled in " + courseCode + "!");
 			}
+
+			courseDAO.dropCourse(courseCode, id_num);
+			response.getWriter().println("Hooray, Dropped " + courseCode + "!");
 
 		} catch (Exception e) {
 			e.printStackTrace();

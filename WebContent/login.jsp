@@ -14,6 +14,8 @@
 			response.sendRedirect("/ADVANSE/index.jsp");
 		%>
 	</shiro:user>
+
+	<h2>Login</h2>
 	<c:if test="${shiroLoginFailure != null}">Incorrect Username or Password.<br />
 	</c:if>
 	<form method="POST" action="">

@@ -9,11 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
-
-import shiro.ShiroPasswordManager;
-import models.User;
-import models.UserDAO;
 
 /**
  * Servlet implementation class register

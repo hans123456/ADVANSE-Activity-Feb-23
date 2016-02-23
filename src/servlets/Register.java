@@ -43,7 +43,7 @@ public class Register extends HttpServlet {
 			user.setInfo("name", name);
 			user.setInfo("id_num", username);
 			user.setInfo("password", ShiroPasswordManager.encryptPassword(password));
-			
+
 			UserDAO dao = new UserDAO();
 			if (dao.create(user)) {
 				response.getWriter().print("Hooray Registered!");
@@ -54,7 +54,7 @@ public class Register extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }
