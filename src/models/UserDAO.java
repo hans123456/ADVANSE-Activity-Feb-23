@@ -9,6 +9,10 @@ public class UserDAO extends DAO {
 
 	private final static String getQuery = "SELECT `users`.`id`, `roles`.`role`, `name`, `id_num`, `datetime_joined` FROM `roles`, `users` WHERE `id_num` = ? and `role_id` = `roles`.`id`";
 	private final static String[] getResult = { "id", "role", "name", "id_num", "datetime_joined" };
+	
+	private static final String getEnrolled = "select courses.id, courses.course_code, courses.units, enrollment.user_id "
+			+ "from enrollment inner join courses on enrollment.course_id = courses.id "
+			+ "where enrollment.user_id = ?";
 
 	public boolean create(User user) {
 		boolean result = false;
@@ -66,5 +70,34 @@ public class UserDAO extends DAO {
 		}
 		return user;
 	}
-
+	
+	public User getEnrolled(User user) {
+		try {
+			con = getConnection();
+			ps = con.prepareStatement(getEnrolled);
+			ps.setInt(1, Integer.parseInt(user.getId()));
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				Course course = new Course(rs.getInt(1), rs.getString(2),
+						rs.getInt(3));
+				user.addCourse(course);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (rs != null)
+					rs.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return user;
+	}
 }

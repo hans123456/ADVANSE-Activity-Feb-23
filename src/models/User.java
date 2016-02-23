@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -12,9 +13,19 @@ import shiro.ShiroPasswordManager;
 public class User {
 
 	private HashMap<String, String> info;
+	private List<Course> courses;
 
 	public User() {
 		this.info = new HashMap<String, String>();
+		this.courses = new ArrayList();
+	}
+	
+	public void addCourse(Course course) {
+		this.courses.add(course);
+	}
+	
+	public List<Course> getCourses() {
+		return this.courses;
 	}
 
 	public void setInfo(String key, String value) {

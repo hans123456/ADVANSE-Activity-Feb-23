@@ -39,14 +39,8 @@ public class ViewEnrolled extends HttpServlet {
 		UserDAO userDAO = new UserDAO();
 		
 		User user = userDAO.getInfo(SecurityUtils.getSubject().getPrincipal().toString());
-		
-		CourseDAO courseDAO = new CourseDAO();
 
-		List<Course> courses = courseDAO.getEnrolledofUser(Integer.parseInt(user.getId()));
-
-		request.setAttribute("courses", courses);
-		
-		System.out.println("a");
+		request.setAttribute("courses", userDAO.getEnrolled(user).getCourses());
 
 		request.getRequestDispatcher("/WEB-INF/student/view_enrolled.jsp").forward(request, response);
 	}
