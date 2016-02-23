@@ -9,11 +9,11 @@
 <body>
 	<a href="/ADVANSE/student/view_all_courses">View All Courses</a>
 	<br />
-	<a href="">View Enrolled Courses</a>
+	<a href="/ADVANSE/student/view_enrolled_courses">View Enrolled Courses</a>
 	<br />
 	<a href="/ADVANSE/student/enroll_course.jsp">Enroll Course</a>
 	<br />
-	<a href="">Drop Course</a>
+	<a href="/ADVANSE/student/drop_course.jsp">Drop Course</a>
 	<br />
 	<form id="logout" method="POST" action="/ADVANSE/logout">
 		<a href="#" onclick="document.getElementById('logout').submit();">Logout</a>
