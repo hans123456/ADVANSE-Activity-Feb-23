@@ -15,6 +15,7 @@ public class CourseDAO extends DAO{
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				Course course= new Course(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
+				courses.add(course);
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

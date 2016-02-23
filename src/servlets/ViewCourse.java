@@ -18,7 +18,7 @@ import models.CourseDAO;
 /**
  * Servlet implementation class ViewCourse
  */
-@WebServlet("/ViewCourse")
+@WebServlet("/view_courses")
 public class ViewCourse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -44,7 +44,6 @@ public class ViewCourse extends HttpServlet {
  
         
         request.setAttribute("courses", courses);
-
 		
         request.getRequestDispatcher("view_courses.jsp").forward(request, response);
 		
