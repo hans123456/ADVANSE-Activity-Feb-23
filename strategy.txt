@@ -27,3 +27,6 @@ Talicol, Ana
 	11. Ana did the back-end for the enroll module.
 	12. Moira did the back-end for the drop module.
 	13. Hans integrated and polished all the modules.
+
+> Time to finish
+	- 6 hours including games, dinner, fb, tv and other distractions
