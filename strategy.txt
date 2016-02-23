@@ -6,20 +6,24 @@ Talicol, Ana
 > Language: Web
 > DB used: MySQL
 
-> Integration Approach: PHASED(?)
+> Integration Approach: PHASED
+			- Each member did a module / function then Hans performed integration
 
 > Tasks done by the group
-	1. 	 The group read the specs individually
-	2. 	 The members get individual features to work on.
-	3. 	 The members downloaded Eclipse JEE and Apache to be used for development.
-	4. 	 The User Interfaces for the different features were done (since the members were having troubles connecting to Git), specifically:
+	1.  The group read the specs individually
+	2.  The members get individual features to work on.
+	3.  The members downloaded Eclipse JEE and Apache to be used for development.
+	4.  The User Interfaces for the different features were done (since the members were having troubles connecting to 	                 Git), specifically:
 			Geraldine	- View All Courses, View All Enrolled 
 			Moira		- Login
-		 	Ana			- Register
+		 	Ana		- Register
+		 	Hans		- Enroll Course, Drop Course
 		 Simultaneously, Hans did the back-end code for the Login and also the Database.
-	6.   The members uploaded their source codes in FB temporarily.
-	7.   When the members all have JEE and Apache, the project was uploaded to Git and pulled by the different members.
-	8.   Hans integrated the back and front end of the login feature.
-	9.   After doing the View All Courses and View All Enrolled UI, Geraldine did the back-end for the same module.
-	10.  Hans did the back-end for the register module.
-	11.	 Ana did the back-end for the enroll module.
+	6.  The members uploaded their source codes in FB temporarily.
+	7.  When the members all have JEE and Apache, the project was uploaded to Git and pulled by the different members.
+	8.  Hans integrated the back and front end of the login feature.
+	9.  After doing the View All Courses and View All Enrolled UI, Geraldine did the back-end for the same module.
+	10. Hans did the back-end for the register module.
+	11. Ana did the back-end for the enroll module.
+	12. Moira did the back-end for the drop module.
+	13. Hans integrated and polished all the modules.
