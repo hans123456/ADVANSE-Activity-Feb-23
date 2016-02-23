@@ -27,25 +27,27 @@
 	}
 
 </style>
-
-<table class="table">
-		<tr>
-			<td class="col">Course Code</td>
-			<td class="col">Units</td>
-			<td class="col">Max # of Students</td>
-			<td class="col">Number of Enrollees</td>
-		</tr>
-		
-		<c:forEach var="course" items="${courses}">
+	<form>
+		<table class="table">
 			<tr>
-				<td class="col">${course.getId()}</td>
-				<td class="col">${course.getCourseCode()}</td>
-				<td class="col">${course.getUnits()}</td>
-				<td class="col">${course.getMaxStudents()}</td>
+				<td class="col">Enroll?</td>
+				<td class="col">Course Code</td>
+				<td class="col">Units</td>
+				<td class="col">Max # of Students</td>
+				<td class="col">Number of Enrollees</td>
 			</tr>
-        </c:forEach>
-		
-	</table>
+			
+			<c:forEach var="course" items="${courses}">
+				<tr>
+					<td class="col"><input type="checkbox" name="enroll" value="${course.getId()}"></td>
+					<td class="col">${course.getCourseCode()}</td>
+					<td class="col">${course.getUnits()}</td>
+					<td class="col">${course.getMaxStudents()}</td>
+					<td class="col">${course.getEnrolledStudents()}</td>
+				</tr>
+	        </c:forEach>
+		</table>
+	</form>
 
 </body>
 </html>
