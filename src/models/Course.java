@@ -5,6 +5,7 @@ public class Course {
 	private String courseCode;
 	private int units;
 	private int maxStudents;
+	private int enrolledStudents;
 	
 	public Course(int id, String courseCode, int units, int maxStudents) {
 		super();
@@ -14,6 +15,23 @@ public class Course {
 		this.maxStudents = maxStudents;
 	}
 	
+	public Course(int id, String courseCode, int units, int maxStudents, int enrolledStudents) {
+		super();
+		this.id = id;
+		this.courseCode = courseCode;
+		this.units = units;
+		this.maxStudents = maxStudents;
+		this.enrolledStudents = enrolledStudents;
+	}
+	
+	public int getEnrolledStudents() {
+		return enrolledStudents;
+	}
+
+	public void setEnrolledStudents(int enrolledStudents) {
+		this.enrolledStudents = enrolledStudents;
+	}
+
 	public int getId() {
 		return id;
 	}
