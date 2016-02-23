@@ -39,7 +39,7 @@ public class Register extends HttpServlet {
 		try {
 
 			String name = request.getParameter("fullname");
-			String username = request.getParameter("idnum");
+			String username = request.getParameter("id_num");
 			String password = request.getParameter("password");
 
 			User user = new User();

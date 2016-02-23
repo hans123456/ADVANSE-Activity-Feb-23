@@ -12,7 +12,7 @@
 			<input type="text" name="fullname">
 			<br>
 			ID Number:<br>
-			<input type="text" name="idnum">
+			<input type="text" name="id_num">
 			<br>
 			Password:<br>
 			<input type="text" name="password">
