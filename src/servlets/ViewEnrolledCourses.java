@@ -37,10 +37,8 @@ public class ViewEnrolledCourses extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		UserDAO userDAO = new UserDAO();
-		User user = userDAO.getInfo(SecurityUtils.getSubject().getPrincipal().toString());
 		CourseDAO courseDAO = new CourseDAO();
-		List<Course> courses = courseDAO.getEnrolledofUser(Integer.parseInt(user.getId()));
+		List<Course> courses = courseDAO.getEnrolledofUser(SecurityUtils.getSubject().getPrincipal().toString());
 		request.setAttribute("courses", courses);
 		request.getRequestDispatcher("/WEB-INF/student/view_enrolled_courses.jsp").forward(request, response);
 

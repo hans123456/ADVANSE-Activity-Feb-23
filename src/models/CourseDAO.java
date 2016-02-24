@@ -28,9 +28,9 @@ public class CourseDAO extends DAO {
 			+ "`enrollment`.`course_id` = (SELECT `id` FROM `courses` WHERE `course_code` = ?) AND"
 			+ "`enrollment`.`user_id` = (SELECT `id` FROM `users` WHERE `id_num` = ?)) as `result`";
 
-	private static final String getEnrolled = "select courses.id, courses.course_code, courses.units, enrollment.user_id "
+	private static final String getEnrolled = "select courses.id, courses.course_code, courses.units "
 			+ "from enrollment inner join courses on enrollment.course_id = courses.id "
-			+ "where enrollment.user_id = ?";
+			+ "inner join users on users.id = enrollment.user_id and users.id_num = ?";
 
 	public List<Course> getCourses() {
 		List<Course> courses = new ArrayList<Course>();
@@ -61,12 +61,12 @@ public class CourseDAO extends DAO {
 		return courses;
 	}
 
-	public List<Course> getEnrolledofUser(int id) {
+	public List<Course> getEnrolledofUser(String id_num) {
 		List<Course> courses = new ArrayList<Course>();
 		try {
 			con = getConnection();
 			ps = con.prepareStatement(getEnrolled);
-			ps.setInt(1, id);
+			ps.setString(1, id_num);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				Course course = new Course(rs.getInt(1), rs.getString(2), rs.getInt(3));

@@ -11,7 +11,7 @@ public class ConnectionFactory {
 	private final static String databaseName = "advanse";
 	private final static String connectionUrl = "jdbc:mysql://" + serverName + "/" + databaseName;
 	private final static String username = "root";
-	private final static String password = "";
+	private final static String password = "1234";
 
 	static {
 		try {
